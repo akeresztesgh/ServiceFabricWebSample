@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime;
+using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
 using Shared;
 
@@ -30,7 +31,9 @@ namespace Stateful1
         /// <returns>A collection of listeners.</returns>
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
         {
-            return new[] { new ServiceReplicaListener((context) => new FabricTransportServiceRemotingListener(context, this)) };
+            // NOTE: either way works
+            return new[] { new ServiceReplicaListener(context => this.CreateServiceRemotingListener(context)) };
+            //return new[] { new ServiceReplicaListener((context) => new FabricTransportServiceRemotingListener(context, this)) };
         }
 
         /// <summary>

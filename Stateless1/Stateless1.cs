@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
+using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 using Shared;
 
 namespace Stateless1
@@ -28,7 +29,9 @@ namespace Stateless1
         /// <returns>A collection of listeners.</returns>
         protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
         {
-            return new[] { new ServiceInstanceListener(context => new FabricTransportServiceRemotingListener(context, this)) };
+            // NOTE: either way works
+            //return new[] { new ServiceInstanceListener((context) => new FabricTransportServiceRemotingListener(context, this)) };
+            return new[] {new ServiceInstanceListener(context => this.CreateServiceRemotingListener(context))};
         }
 
         /// <summary>
