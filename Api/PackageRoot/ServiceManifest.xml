@@ -29,6 +29,7 @@
            listen. Please note that if your service is partitioned, this port is shared with 
            replicas of different partitions that are placed in your code. -->
       <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8729" />
+      <Endpoint Protocol="tcp" Name="ServiceEndpoint1" Type="Input" Port="223" />
     </Endpoints>
   </Resources>
 </ServiceManifest>
