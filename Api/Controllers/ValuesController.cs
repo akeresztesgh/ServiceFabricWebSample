@@ -15,8 +15,8 @@ namespace Api.Controllers
         [HttpGet]
         [Route("statelessCounter")]
         public async Task<IHttpActionResult> Stateless()
-        {
-            // use null for the 2nd parameter because the instance count is set to -1 in ApplicationManifest.xml
+        {            
+            // use null for the 2nd parameter because the instance count is set to <SingletonPartition /> in ApplicationManifest.xml
             var statelessClient = ServiceProxy.Create<IStateless>(new Uri(FabricRuntime.GetActivationContext().ApplicationName + "/Stateless1"), null);
             var value = await statelessClient.GetCurrentValue();
 

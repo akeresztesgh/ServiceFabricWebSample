@@ -4,6 +4,7 @@
       <Parameter Name="Stateful1_MinReplicaSetSize" DefaultValue="2" />
       <Parameter Name="Stateful1_PartitionCount" DefaultValue="1" />
       <Parameter Name="Stateful1_TargetReplicaSetSize" DefaultValue="3" />
+      <!-- -1 means run one instance on each node. -->
       <Parameter Name="Stateless1_InstanceCount" DefaultValue="-1" />
       <Parameter Name="Api_InstanceCount" DefaultValue="-1" />
    </Parameters>
